@@ -1,4 +1,4 @@
-// import { PageRouteProps } from "@/interface";
+import { PageRouteProps } from "@/interface";
 import { ReactNode } from "react"
 
 
