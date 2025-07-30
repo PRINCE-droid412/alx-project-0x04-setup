@@ -1,14 +1,14 @@
 import Link from "next/link";
 import Button from "../common/Button";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
+import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
-import { useCount } from "@/context/CountContext";
-import type { RootState } from "@/store"; // Adjust the path if your store file is elsewhere
 
 const Header: React.FC = () => {
-  const pathname = usePathname();
-  const count = useSelector((state: RootState) => state.counter.value);
+
+  const pathname = usePathname()
+  const count = useSelector((state: RootState) => state.counter.value)
+
 
   return (
     <header className="fixed w-full bg-white shadow-md">
@@ -17,15 +17,24 @@ const Header: React.FC = () => {
           Splash App
         </Link>
 
+        {/* Button Group */}
         <div className="flex gap-4">
-          {!["/counter-app"].includes(pathname) ? (
-            <>
-              <Button buttonLabel="Sign In" buttonBackgroundColor="red" />
-              <Button buttonLabel="Sign Up" buttonBackgroundColor="blue" />
-            </>
-          ) : (
-            <p className="font-semibold text-lg">Current count : {count}</p>
-          )}
+          {
+            !["/counter-app"].includes(pathname) ? (
+              <>
+              <Button
+            buttonLabel="Sign In"
+            buttonBackgroundColor="red"
+          />
+          <Button
+            buttonLabel="Sign Up"
+            buttonBackgroundColor="blue"
+          /></>
+            ) : (
+              <p className=" font-semibold text-lg">Current count : {count}</p>
+            )
+          }
+
         </div>
       </div>
     </header>
